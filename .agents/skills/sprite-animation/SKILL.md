@@ -1,7 +1,19 @@
 ---
 name: sprite-animation
-description: >-
-  Use this skill when developing, validating, slicing, or managing 2D sprite sheets, animation sequences, frame durations, tag loops, and Aseprite files (.ase/.aseprite) for Ebitengine games. Serves as the specialized Animator Agent role for game development teams.
+description: >
+  2D sprite sheet management, frame animation sequencing, and Aseprite
+  integration guide for games. Covers sprite grid slicing, animation state
+  machines (idle, walk, attack, death), frame duration timing, tag loops, and Go
+  animation controllers in Ebitengine. Activate when slicing sprite sheets,
+  configuring character animations, integrating Aseprite files (.ase/.aseprite),
+  or writing game animation controllers.
+license: Apache-2.0
+metadata:
+  category: game-dev
+  tags: "spritesheet, animation, keyframes, aseprite, game-dev, ebitengine"
+  author: Daniela Petruzalek (daniela@danicat.dev)
+  version: "0.2.0"
+  catalog: https://skills.danicat.dev
 ---
 
 # 2D Sprite Animation & Aseprite Integration Guide (Animator Role)
@@ -84,7 +96,7 @@ func (p *Player) Update(dt float32) {
 func (p *Player) Draw(screen *ebiten.Image) {
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(float64(p.X), float64(p.Y))
-	
+
 	// Draw current frame sub-image from Aseprite atlas
 	sub := p.Anim.Image.SubImage(p.Anim.CurrentFrameBounds()).(*ebiten.Image)
 	screen.DrawImage(sub, op)

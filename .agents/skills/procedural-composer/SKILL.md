@@ -1,19 +1,33 @@
 ---
 name: procedural-composer
-description: >-
-  Use this skill when designing, implementing, or optimizing pure-code procedural audio synthesis engines, sound effects (SFX), or polyphonic background music (BGM) without external assets. Activate for any questions or tasks involving audio DSP math, FM synthesis, ADSR envelopes, sound chip emulation (YM2612, SPC700, PS1 SPU), chiptunes, multi-track audio mixing, or game sound system code.
+description: >
+  Pure-code procedural audio synthesis guide for sound effects (SFX) and
+  polyphonic background music (BGM) in games. Generates 16-bit stereo PCM audio
+  in memory without external audio files, featuring multi-channel polyphonic
+  composition, ADSR envelopes, frequency modulation, and declarative JSON sound
+  definitions with a CLI player and WAV exporter. Activate when synthesizing
+  sound effects, composing chiptune background music, building zero-asset audio
+  engines, or exporting procedural sounds to WAV.
+license: Apache-2.0
+metadata:
+  category: game-dev
+  tags: "procedural-audio, game-dev, chiptune, synth, sfx, bgm"
+  author: Daniela Petruzalek (daniela@danicat.dev)
+  version: "0.2.0"
+  catalog: https://skills.danicat.dev
 ---
 
 # Procedural Composer: Pure-Code Audio Synthesis & Chiptune/Game Sound Engine Guide
 
 This skill provides complete mathematical, musical, and software architecture patterns for generating high-quality sound effects (SFX) and polyphonic background music (BGM) purely in code—without relying on external `.wav`, `.mp3`, or `.ogg` audio files.
 
-> [!TIP]
-> **Example Sound Driver & CLI Tool Suite**:
-> All driver, test, and player components reside together in [`scripts/`](./scripts/):
-> * **Sound Engine Driver & JSON Parser**: [`scripts/sound.go`](./scripts/sound.go)
-> * **Masterclass BGM/SFX Examples (`ExampleXxx`)**: [`scripts/sound_test.go`](./scripts/sound_test.go)
-> * **Lean CLI Audio Player**: [`scripts/play.go`](./scripts/play.go)
+---
+
+## Available scripts
+
+- `scripts/sound.go`: Sound engine driver and declarative JSON audio definition parser.
+- `scripts/sound_test.go`: Go unit tests and example BGM/SFX composition recipes.
+- `scripts/play.go`: CLI audio player and WAV export utility.
 
 ---
 
@@ -53,8 +67,8 @@ A music track should feature **at least 6 distinct polyphonic channels/instrumen
 
 ### 2.2 Dual Music Playback Architecture: One-Off vs. Looped Playback
 
-The audio playback subsystem (`SoundSystem` in [`scripts/sound.go`](./scripts/sound.go)) explicitly supports two distinct playback modes:
-* **Looped Playback (`Play(pcm, true)`)**: For stage themes, boss battles, title screens, and menus where music must loop seamlessly without gaps using an infinite reader wrapper (`audio.NewInfiniteLoop`).
+The audio playback subsystem (`SoundSystem` in [`scripts/sound.go`](scripts/sound.go)) explicitly supports two distinct playback modes:
+* **Looped Playback (`Play(pcm, true)`)**: For stage themes, boss battles, title screens, and menus where music must loop continuously without audible gaps using an infinite reader wrapper (`audio.NewInfiniteLoop`).
 * **One-Off / Single Play (`Play(pcm, false)`)**: Default mode for game over music, stage clear fanfares, calamity alerts, and victory stingers that play once to completion and then stop without looping.
 
 ---
@@ -84,7 +98,7 @@ $$t_{\text{beat}} = \frac{60}{\text{BPM}}$$
 
 ## 3. SECTION 2: JSON Sound Format & CLI Player (`play.go`)
 
-To test sound effects and multi-track compositions outside game runtimes, use the declarative **JSON Sound Format** parsed natively by [`scripts/sound.go`](./scripts/sound.go).
+To test sound effects and multi-track compositions outside game runtimes, use the declarative **JSON Sound Format** parsed natively by [`scripts/sound.go`](scripts/sound.go).
 
 ### 3.1 Declarative JSON Sound Specification
 
@@ -164,21 +178,21 @@ To test sound effects and multi-track compositions outside game runtimes, use th
 
 ### 3.2 Using the CLI Player Tool (`play.go`)
 
-The CLI player [`scripts/play.go`](./scripts/play.go) allows developers and testing agents to play or export audio definitions. Note: adjust the path to be relative to the skill directory
+The CLI player [`scripts/play.go`](scripts/play.go) allows developers and testing agents to play or export audio definitions:
 
 ```bash
 # 1. Play JSON sound effect or song (one-off by default)
-go run . play sound.json
+go run ./scripts play sound.json
 
 # 2. Play JSON sound effect or song in a loop
-go run . play -loop song_stage.json
+go run ./scripts play -loop song_stage.json
 
 # 3. Play built-in 6-channel Genesis style demo soundtrack (one-off or -loop)
-go run . demo
-go run . demo -loop
+go run ./scripts demo
+go run ./scripts demo -loop
 
 # 4. Synthesize JSON definition and export directly to a 16-bit 44.1kHz Stereo .wav file
-go run . export song_stage.json stage_theme.wav
+go run ./scripts export song_stage.json stage_theme.wav
 ```
 
 ---

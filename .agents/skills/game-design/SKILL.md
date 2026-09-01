@@ -1,7 +1,20 @@
 ---
 name: game-design
-description: >-
-  Use this skill when guiding the user through game concept design, defining core mechanics, conducting interactive game design interviews (/grill-me), or generating a Game Design Document (GDD.md) for 2D games.
+description: >
+  Interactive game design workflow and Game Design Document (GDD) authoring
+  guide for 2D games. Structures game ideation through interactive probing
+  interviews, defining core gameplay loops, win and loss conditions, control
+  schemes, visual asset pipelines, and audio strategies into a clean GDD.md.
+  Activate when conceptualizing a new game, defining gameplay mechanics,
+  conducting game design interviews (/grill-me), or authoring a Game Design
+  Document.
+license: Apache-2.0
+metadata:
+  category: game-dev
+  tags: "gdd, mechanics, game-dev, prototyping"
+  author: Daniela Petruzalek (daniela@danicat.dev)
+  version: "0.2.0"
+  catalog: https://skills.danicat.dev
 ---
 
 # Game Design & Interactive GDD Creation Guide (Game Designer Role)
@@ -68,19 +81,19 @@ For the complete, production-grade Game Design Document template, consult:
 Use these interview question templates during the `/grill-me` session:
 
 ### Question 1: Core Loop & Hook
-> *"What is the core 1-sentence pitch for your game, and what is the main mechanic?"*  
+> *"What is the core 1-sentence pitch for your game, and what is the main mechanic?"*
 > **Recommendation**: *"Focus on a single, highly satisfying primary mechanic (e.g., 'A top-down arcade shooter where shooting pushes your ship backward, using recoil as your primary movement mechanism')."*
 
 ### Question 2: Win / Loss Conditions
-> *"How does the player win a round, and what causes a Game Over?"*  
+> *"How does the player win a round, and what causes a Game Over?"*
 > **Recommendation**: *"Keep game jam rounds short (1–3 minutes per run). Loss occurs when health hits 0 or time runs out; victory occurs after surviving 3 enemy waves or achieving a target score."*
 
 ### Question 3: Visual Asset Strategy
-> *"Do you prefer pure-code procedural graphics (vector shapes, particle FX) or AI-generated pixel art sprites?"*  
+> *"Do you prefer pure-code procedural graphics (vector shapes, particle FX) or AI-generated pixel art sprites?"*
 > **Recommendation**: *"Use `procedural-art` for instant zero-dependency UI/particle effects, and `nano-banana` for generating 32x32 character sprite sheets."*
 
 ### Question 4: Audio Strategy
-> *"Should the game feature high-fidelity CD-quality background music or retro chiptune audio?"*  
+> *"Should the game feature high-fidelity CD-quality background music or retro chiptune audio?"*
 > **Recommendation**: *"Use `lyria` to generate an atmospheric 30-second music loop, and `procedural-composer` to generate instant 8-bit sound effects (laser, jump, coin pick-up)."*
 
 ---

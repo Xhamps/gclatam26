@@ -1,6 +1,19 @@
 ---
 name: ebitengineer
-description: Best practices and guidelines for building production-grade 2D games in Go using Ebitengine (v2). Activate when designing game architecture, state machines, cycle timing, WASM audio sync, camera viewports, shaders, or custom typography.
+description: >
+  Engineering architecture and best practices for building 2D games in Go using
+  Ebitengine (v2). Covers modular game architecture, scene state machines,
+  virtual resolution scaling, delta-time physics, zero-allocation draw loops,
+  Kage shaders, and WebAssembly audio synchronization. Activate when designing,
+  building, optimizing, or debugging 2D games in Go, implementing game systems
+  with Ebitengine, or compiling games to WebAssembly.
+license: Apache-2.0
+metadata:
+  category: game-dev
+  tags: "ebitengine, go, golang, game-dev, 2d, wasm, shaders"
+  author: Daniela Petruzalek (daniela@danicat.dev)
+  version: "0.2.0"
+  catalog: https://skills.danicat.dev
 ---
 
 # Ebitengine 2D Game Development Guide (ebitengineer)

@@ -1,7 +1,19 @@
 ---
 name: procedural-art
-description: >-
-  Use this skill when designing, generating, or optimizing pure-code procedural 2D sprites, tilemaps, vector graphics, particle systems, or visual effects without external image files. Activate for any tasks involving procedural rasterization, color palette theory, 2D matrix transformations, order of operations (scale, rotate, translate), particle pools, sub-frame interpolation/easing curves, or bitmap pixel crafting in game development.
+description: >
+  Pure-code procedural graphics, sprite generation, and visual effects (VFX)
+  guide for 2D games. Generates sprites, tilesets, particle systems, and vector
+  shapes in memory without external image files, enforcing 2D matrix
+  transformation order, sub-frame animation easing, and pre-allocated particle
+  pools. Activate when creating procedural 2D sprites, building zero-asset
+  games, designing particle effects, or implementing 2D matrix transformations.
+license: Apache-2.0
+metadata:
+  category: game-dev
+  tags: "game-dev, sprites, pixel-art, particles, vfx"
+  author: Daniela Petruzalek (daniela@danicat.dev)
+  version: "0.2.0"
+  catalog: https://skills.danicat.dev
 ---
 
 # Procedural Art: Pure-Code 2D Sprites, Tiles, Particle Systems & Vector Graphics Guide
@@ -9,9 +21,9 @@ description: >-
 This skill provides complete mathematical, graphical, and software architecture patterns for generating high-quality 2D sprites, tilesets, vector shapes, particle systems, and visual effects (VFX) purely in code—without relying on external `.png`, `.jpg`, or `.svg` asset files.
 
 > [!TIP]
-> **Production Reference Implementation**:
-> * **Procedural Art Driver**: [`references/art.go`](./references/art.go)
-> * **Matrix Order & Easing Tests**: [`references/art_test.go`](./references/art_test.go)
+> **Reference Implementation**:
+> * **Procedural Art Driver**: [`references/art.go`](references/art.go)
+> * **Matrix Order & Easing Tests**: [`references/art_test.go`](references/art_test.go)
 
 ---
 
@@ -184,3 +196,10 @@ When an AI agent uses this skill to generate procedural graphics or sprite rende
 3. **Verify Matrix Order**: Enforce `Pivot -> Scale -> Rotate -> World Translation` on every `ebiten.GeoM` call.
 4. **Pre-allocate VFX Particle Pools**: Use fixed particle arrays with zero heap allocations during frame updates.
 5. **Apply Additive Blending to Spells**: Enable `ebiten.BlendLighter` for fire, lasers, and magical energy glows.
+
+---
+
+## 📚 Progressive Disclosure & References
+
+- **Procedural Art Driver**: [`references/art.go`](references/art.go) — In-memory sprite rasterization, 32-bit RGBA color palettes, SDF shapes, and particle systems.
+- **Matrix Order & Easing Tests**: [`references/art_test.go`](references/art_test.go) — Mathematical unit test suite verifying transformation order ($T \cdot R \cdot S \cdot T_{pivot}$) and non-linear easing functions.
