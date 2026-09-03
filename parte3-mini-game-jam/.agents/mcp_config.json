@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "gopls": {
+      "command": "gopls",
+      "args": ["mcp"]
+    },
+    "godoctor": {
+      "command": "godoctor",
+      "args": ["mcp"]
+    },
+    "agentskills": {
+      "command": "npx",
+      "args": ["-y", "agentskills-mcp"]
+    }
+  }
+}
